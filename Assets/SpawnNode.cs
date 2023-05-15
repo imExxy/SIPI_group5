@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnNode : MonoBehaviour {
     public GameObject nextNode;
     public bool hasSpawned = false;
-    public int nodeDist = 16;
+    public int nodeDist = 12;
     private List<Vector3> storedPositions;
 
     void Start() {
@@ -25,7 +25,7 @@ public class SpawnNode : MonoBehaviour {
     public void spawnNode(){
         nextNode = Instantiate(nextNode, transform.position, transform.rotation);
         nextNode.transform.parent = transform.parent;
-        nextNode.tag = "Tail";
+        nextNode.tag = "Obstacle";
         hasSpawned = true;
     }
 }

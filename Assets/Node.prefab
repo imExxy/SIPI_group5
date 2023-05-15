@@ -129,4 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNode: {fileID: 8384800319645436188}
   hasSpawned: 0
-  nodeDist: 24
+  nodeDist: 16

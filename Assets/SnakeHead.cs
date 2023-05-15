@@ -41,9 +41,8 @@ public class SnakeHead : MonoBehaviour {
             Vector3 myVector = new Vector3(Random.Range(-10.0f, 10.0f), 1, Random.Range(-10.0f, 10.0f));
             Instantiate(Fruit, myVector, transform.rotation);
         }
-        if(other.tag == "Tail"){
+        if(other.tag == "Obstacle"){
             Destroy(this);
-            Debug.Log("AAAAA");
         }
     }
 }
