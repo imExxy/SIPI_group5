@@ -6,7 +6,9 @@ public class SnakeHead : MonoBehaviour {
     public float Speed;
     public GameObject nodeNext;
     public GameObject Fruit;
+    public GameObject scoreCounter;
     public int nodeDist;
+    public AudioSource Chomp;
     private Vector3 Direction = new Vector3(1, 0, 0);
     private List<Vector3> storedPositions;
     void Start() {
@@ -34,14 +36,17 @@ public class SnakeHead : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other){
+        Chomp.Play(); 
         if(other.tag == "Fruit"){
             transform.GetComponentInParent<Length>().len++;
+            scoreCounter.GetComponent<Score>().changeScore(transform.GetComponentInParent<Length>().len-2);
             Destroy(other.gameObject);
             transform.GetComponentInParent<Length>().spawnNode();
             Vector3 myVector = new Vector3(Random.Range(-10.0f, 10.0f), 1, Random.Range(-10.0f, 10.0f));
             Instantiate(Fruit, myVector, transform.rotation);
         }
         if(other.tag == "Obstacle"){
+            scoreCounter.GetComponent<Score>().gameOver();
             Destroy(this);
         }
     }
