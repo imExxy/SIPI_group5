@@ -25,6 +25,7 @@ public class SpawnNode : MonoBehaviour {
     public void spawnNode(){
         nextNode = Instantiate(nextNode, transform.position, transform.rotation);
         nextNode.transform.parent = transform.parent;
+        nextNode.name = "body";
         nextNode.tag = "Obstacle";
         hasSpawned = true;
     }

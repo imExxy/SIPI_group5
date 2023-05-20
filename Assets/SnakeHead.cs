@@ -5,12 +5,15 @@ using UnityEngine;
 public class SnakeHead : MonoBehaviour {
     public float Speed;
     public GameObject nodeNext;
-    public GameObject Fruit;
+    public GameObject fruit_t1;
+    public GameObject fruit_t2;
+    public GameObject fruit_t3;
     public GameObject scoreCounter;
     public int nodeDist;
     public AudioSource Chomp;
     private Vector3 Direction = new Vector3(1, 0, 0);
     private List<Vector3> storedPositions;
+    private int upperRandRange;
     void Start() {
         Application.targetFrameRate = 120;
         storedPositions = new List<Vector3>();
@@ -39,11 +42,39 @@ public class SnakeHead : MonoBehaviour {
         Chomp.Play(); 
         if(other.tag == "Fruit"){
             transform.GetComponentInParent<Length>().len++;
-            scoreCounter.GetComponent<Score>().changeScore(transform.GetComponentInParent<Length>().len-2);
+            // scoreCounter.GetComponent<Score>().changeScore(transform.GetComponentInParent<Length>().len-2); old
+            int tempScore = scoreCounter.GetComponent<Score>().score;
+            int toAdd = other.GetComponent<Fruit>().reward;
+            scoreCounter.GetComponent<Score>().changeScore(tempScore + toAdd);
             Destroy(other.gameObject);
             transform.GetComponentInParent<Length>().spawnNode();
             Vector3 myVector = new Vector3(Random.Range(-10.0f, 10.0f), 1, Random.Range(-10.0f, 10.0f));
-            Instantiate(Fruit, myVector, transform.rotation);
+            if((tempScore + toAdd) < 20)
+            {
+                upperRandRange = 1;
+            }
+            if ((tempScore + toAdd) >= 20 && (tempScore + toAdd) < 50)
+            {
+                upperRandRange = 2;
+            }
+            if((tempScore + toAdd) >= 50)
+            {
+                upperRandRange = 3;
+            }
+            int newFruit = Random.Range(1, (upperRandRange + 1));
+            if(newFruit == 1)
+            {
+                Instantiate(fruit_t1, myVector, transform.rotation);
+            }
+            if (newFruit == 2)
+            {
+                Instantiate(fruit_t2, myVector, transform.rotation);
+            }
+            if (newFruit == 3)
+            {
+                Instantiate(fruit_t3, myVector, transform.rotation);
+            }
+            //Instantiate(fruit_t1, myVector, transform.rotation);
         }
         if(other.tag == "Obstacle"){
             scoreCounter.GetComponent<Score>().gameOver();
