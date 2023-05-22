@@ -1,0 +1,85 @@
+\doxysection{Snake\+Head Class Reference}
+\hypertarget{class_snake_head}{}\label{class_snake_head}\index{SnakeHead@{SnakeHead}}
+Inheritance diagram for Snake\+Head\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_snake_head}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_snake_head_a332c49569d6195928b9e4349430ccfcb}\label{class_snake_head_a332c49569d6195928b9e4349430ccfcb} 
+float {\bfseries Speed}
+\item 
+\Hypertarget{class_snake_head_a9254bce347171f565368629377153ab2}\label{class_snake_head_a9254bce347171f565368629377153ab2} 
+Game\+Object {\bfseries node\+Next}
+\item 
+\Hypertarget{class_snake_head_a6a6c48c19f5e3e6a3d5e116c4ed43c37}\label{class_snake_head_a6a6c48c19f5e3e6a3d5e116c4ed43c37} 
+Game\+Object {\bfseries fruit\+\_\+t1}
+\item 
+\Hypertarget{class_snake_head_aa7c4f3e828c8f330bc92f00540e04947}\label{class_snake_head_aa7c4f3e828c8f330bc92f00540e04947} 
+Game\+Object {\bfseries fruit\+\_\+t2}
+\item 
+\Hypertarget{class_snake_head_a7e9252513f5282cd3aa08bafb5032880}\label{class_snake_head_a7e9252513f5282cd3aa08bafb5032880} 
+Game\+Object {\bfseries fruit\+\_\+t3}
+\item 
+\Hypertarget{class_snake_head_a30af2679683b1869e2d156154417d511}\label{class_snake_head_a30af2679683b1869e2d156154417d511} 
+Game\+Object {\bfseries score\+Counter}
+\item 
+\Hypertarget{class_snake_head_a1e7e6a07eb75e78afc99e0a1881e287d}\label{class_snake_head_a1e7e6a07eb75e78afc99e0a1881e287d} 
+int {\bfseries node\+Dist}
+\begin{DoxyCompactList}\small\item\em for precise following \end{DoxyCompactList}\item 
+\Hypertarget{class_snake_head_aa2fac7cb532da83e587533a2e05675e8}\label{class_snake_head_aa2fac7cb532da83e587533a2e05675e8} 
+Audio\+Source {\bfseries Chomp}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_snake_head_aa96f55616e78ac313a91eb876df40e22}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_snake_head_a6e16502e957419dbfbca36a01171b30c}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_snake_head_a9fbd568ac5f5a56e9c5c37876447abe6}{On\+Trigger\+Enter}} (Collider other)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_snake_head_a390ec8c3fe4c027078d2e5a537ae0328}\label{class_snake_head_a390ec8c3fe4c027078d2e5a537ae0328} 
+Vector3 {\bfseries Direction} = new Vector3(1, 0, 0)
+\begin{DoxyCompactList}\small\item\em might be removable idk \end{DoxyCompactList}\item 
+\Hypertarget{class_snake_head_ad0c52a8300c585a9187d2e9910fc9044}\label{class_snake_head_ad0c52a8300c585a9187d2e9910fc9044} 
+List$<$ Vector3 $>$ {\bfseries stored\+Positions}
+\begin{DoxyCompactList}\small\item\em for precise following \end{DoxyCompactList}\item 
+\Hypertarget{class_snake_head_a88a34dd55670ebcf80e8e816370014d2}\label{class_snake_head_a88a34dd55670ebcf80e8e816370014d2} 
+int {\bfseries upper\+Rand\+Range}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+the \doxylink{class_snake_head}{Snake\+Head} class is responsible for most of the gameplay. This includes\+: the snake movement, spawning new nodes, eating fruits, spawning new fruits, updating the length and score. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_snake_head_a9fbd568ac5f5a56e9c5c37876447abe6}\label{class_snake_head_a9fbd568ac5f5a56e9c5c37876447abe6} 
+\index{SnakeHead@{SnakeHead}!OnTriggerEnter@{OnTriggerEnter}}
+\index{OnTriggerEnter@{OnTriggerEnter}!SnakeHead@{SnakeHead}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter()}{OnTriggerEnter()}}
+{\footnotesize\ttfamily void Snake\+Head.\+On\+Trigger\+Enter (\begin{DoxyParamCaption}\item[{Collider}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Analyzing stuff the snake eats. \Hypertarget{class_snake_head_aa96f55616e78ac313a91eb876df40e22}\label{class_snake_head_aa96f55616e78ac313a91eb876df40e22} 
+\index{SnakeHead@{SnakeHead}!Start@{Start}}
+\index{Start@{Start}!SnakeHead@{SnakeHead}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Snake\+Head.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\doxylink{class_snake_head_aa96f55616e78ac313a91eb876df40e22}{Snake\+Head.\+Start} initializes the first tail node. This throws the next node far away so it doesnt hit the head upon start yet it shouldnt hit the head cuz i tagged it \"{}\+Safe\"{} instead\Hypertarget{class_snake_head_a6e16502e957419dbfbca36a01171b30c}\label{class_snake_head_a6e16502e957419dbfbca36a01171b30c} 
+\index{SnakeHead@{SnakeHead}!Update@{Update}}
+\index{Update@{Update}!SnakeHead@{SnakeHead}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Snake\+Head.\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\doxylink{class_snake_head_a6e16502e957419dbfbca36a01171b30c}{Snake\+Head.\+Update} is responsible for movement, node following and controls. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Snake\+Head.\+cs\end{DoxyCompactItemize}

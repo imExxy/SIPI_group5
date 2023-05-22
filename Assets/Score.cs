@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/**
+ * the Score class controls the score counter, loads the game over screen and resets the scene.
+ */ 
 public class Score : MonoBehaviour {
     public int score;
     public Text scoreCounter; 
@@ -12,16 +15,23 @@ public class Score : MonoBehaviour {
     //bool isGameOver = false;
     //public GameObject cam;
     //private float counter = 1;
-
+    /*!
+     * \param[in] sc Score
+     * Technically sets the score, so doing stuff like score multipliers might be tricky
+     */
     public void changeScore(int sc){
         score = sc; 
         scoreCounter.text = sc.ToString();
     }
-
+    /*!
+     * Resets the scene.
+     */
     public void resetGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    /*!
+     * There's a commented line that could be used in future development.
+     */ 
     public void gameOver(){
         gameOverScreen.SetActive(true);
         //isGameOver = true;

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class SpawnNode : MonoBehaviour {
     public GameObject nextNode;
-    public bool hasSpawned = false;
-    public int nodeDist = 12; 
+    public bool hasSpawned = false; //for spawning new nodes
+    public int nodeDist = 12; //how many positions we store for precise following
     private List<Vector3> storedPositions; //for precise following
 
     void Start() {
         storedPositions = new List<Vector3>();
     }
-
+    /**
+     * SpawnNode.Update is responsible for storing and updating positions for precise following.
+     */
     void Update() {
         if(hasSpawned){
             storedPositions.Add(transform.position);
@@ -22,7 +24,9 @@ public class SpawnNode : MonoBehaviour {
             }
         }
     }
-
+    /*!
+     * Spawns the next node (duh)
+     */
     public void spawnNode(){
         nextNode = Instantiate(nextNode, transform.position, transform.rotation);
         nextNode.transform.parent = transform.parent;

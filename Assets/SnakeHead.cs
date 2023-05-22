@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * the SnakeHead class is responsible for most of the gameplay.
+ * This includes: the snake movement, spawning new nodes,
+ * eating fruits, spawning new fruits, updating the length and score.
+ */ 
+
 public class SnakeHead : MonoBehaviour {
     public float Speed;
     public GameObject nodeNext;
@@ -9,22 +15,27 @@ public class SnakeHead : MonoBehaviour {
     public GameObject fruit_t2;
     public GameObject fruit_t3;
     public GameObject scoreCounter;
-    public int nodeDist;
+    public int nodeDist; ///< for precise following
     public AudioSource Chomp;
-    private Vector3 Direction = new Vector3(1, 0, 0); //might be removable idk
-    private List<Vector3> storedPositions; //for precise following
+    private Vector3 Direction = new Vector3(1, 0, 0); ///< might be removable idk
+    private List<Vector3> storedPositions; ///<for precise following
     private int upperRandRange;
+    /*!
+     SnakeHead.Start initializes the first tail node. 
+     */ 
     void Start() {
         Application.targetFrameRate = 120;
         storedPositions = new List<Vector3>();
-        //throwing the next node far away so it doesnt hit the head upon start
-        //yet it shouldnt hit the head cuz i tagged it "Safe" instead
+        ///This throws the next node far away so it doesnt hit the head upon start
+        ///yet it shouldnt hit the head cuz i tagged it "Safe" instead
         Vector3 start = new Vector3(1000, 10000, 10000);
         nodeNext = Instantiate(nodeNext, start, transform.rotation);
         nodeNext.tag = "Safe";
         nodeNext.transform.parent = transform.parent;
     }
-
+    /*!
+     * SnakeHead.Update is responsible for movement, node following and controls. 
+     */ 
     void Update() {
         //movement
         transform.Translate(Direction * Time.deltaTime * Speed);
@@ -42,7 +53,9 @@ public class SnakeHead : MonoBehaviour {
             transform.Rotate(0, 90, 0);
         }
     }
-
+    /*!
+     * Analyzing stuff the snake eats.
+     */ 
     void OnTriggerEnter(Collider other){
         Chomp.Play(); 
         if(other.tag == "Fruit"){
