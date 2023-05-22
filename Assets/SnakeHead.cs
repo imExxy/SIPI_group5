@@ -11,12 +11,14 @@ public class SnakeHead : MonoBehaviour {
     public GameObject scoreCounter;
     public int nodeDist;
     public AudioSource Chomp;
-    private Vector3 Direction = new Vector3(1, 0, 0);
-    private List<Vector3> storedPositions;
+    private Vector3 Direction = new Vector3(1, 0, 0); //might be removable idk
+    private List<Vector3> storedPositions; //for precise following
     private int upperRandRange;
     void Start() {
         Application.targetFrameRate = 120;
         storedPositions = new List<Vector3>();
+        //throwing the next node far away so it doesnt hit the head upon start
+        //yet it shouldnt hit the head cuz i tagged it "Safe" instead
         Vector3 start = new Vector3(1000, 10000, 10000);
         nodeNext = Instantiate(nodeNext, start, transform.rotation);
         nodeNext.tag = "Safe";
@@ -24,12 +26,15 @@ public class SnakeHead : MonoBehaviour {
     }
 
     void Update() {
+        //movement
         transform.Translate(Direction * Time.deltaTime * Speed);
+        //following
         storedPositions.Add(transform.position);
         if(storedPositions.Count > nodeDist){
             nodeNext.transform.position = storedPositions[0];
             storedPositions.RemoveAt(0);
         }
+        //controls
         if (Input.GetKeyDown(KeyCode.A)){
             transform.Rotate(0, -90, 0);
         }

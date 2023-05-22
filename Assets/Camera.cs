@@ -6,6 +6,7 @@ public class Camera : MonoBehaviour{
     public GameObject snake;
     public Vector3 offset;
     void Update() {
+        //making the camera always stay above the snake
         transform.position = snake.transform.position + offset;
     }
 }

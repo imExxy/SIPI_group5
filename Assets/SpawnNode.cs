@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnNode : MonoBehaviour {
     public GameObject nextNode;
     public bool hasSpawned = false;
-    public int nodeDist = 12;
-    private List<Vector3> storedPositions;
+    public int nodeDist = 12; 
+    private List<Vector3> storedPositions; //for precise following
 
     void Start() {
         storedPositions = new List<Vector3>();
@@ -17,7 +17,8 @@ public class SpawnNode : MonoBehaviour {
             storedPositions.Add(transform.position);
             if(storedPositions.Count > nodeDist){
                 nextNode.transform.position = storedPositions[0];
-                storedPositions.RemoveAt(0);
+                //might need to do this in a loop so we can change nodeDist
+                storedPositions.RemoveAt(0); 
             }
         }
     }

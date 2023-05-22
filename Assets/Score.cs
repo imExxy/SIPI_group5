@@ -8,6 +8,7 @@ public class Score : MonoBehaviour {
     public int score;
     public Text scoreCounter; 
     public GameObject gameOverScreen;
+    //these might be used later for changing the way camera works upon death
     //bool isGameOver = false;
     //public GameObject cam;
     //private float counter = 1;
@@ -25,6 +26,7 @@ public class Score : MonoBehaviour {
         gameOverScreen.SetActive(true);
         //isGameOver = true;
     }
+    //this might be used later for changing the way camera works upon death
     /*void Update(){
         if(isGameOver){
             Vector3 fly = new Vector3(0f, cam.transform.position.y + 10.0f/counter * Time.deltaTime, 0f);
